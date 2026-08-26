@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduMain - Introduction to Software Maintenance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-tint": "#5654a8",
+                      "secondary": "#006591",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "on-primary-fixed": "#100563",
+                      "on-primary-fixed-variant": "#3e3c8f",
+                      "surface": "#f8f9ff",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-primary-container": "#9c9af4",
+                      "surface-container-high": "#dce9ff",
+                      "secondary-container": "#39b8fd",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-container": "#1e19b2",
+                      "tertiary-fixed-dim": "#c0c1ff",
+                      "primary-fixed": "#e2dfff",
+                      "surface-dim": "#cbdbf5",
+                      "outline-variant": "#c8c5d3",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#001e2f",
+                      "inverse-primary": "#c3c0ff",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container": "#e5eeff",
+                      "inverse-surface": "#213145",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#07006c",
+                      "outline": "#777682",
+                      "surface-bright": "#f8f9ff",
+                      "on-surface": "#0b1c30",
+                      "on-secondary-container": "#004666",
+                      "background": "#f8f9ff",
+                      "on-surface-variant": "#474651",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "tertiary": "#0a0086",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed-variant": "#2f2ebe",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#e1e0ff",
+                      "secondary-fixed": "#c9e6ff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#979aff",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#312e81",
+                      "on-secondary": "#ffffff",
+                      "primary": "#1a146b",
+                      "on-secondary-fixed-variant": "#004c6e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "margin-desktop": "48px",
+                      "lg": "24px",
+                      "margin-mobile": "16px",
+                      "xxl": "64px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "gutter": "24px",
+                      "max-width": "1280px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "code-sm": [
+                              "monospace"
+                      ],
+                      "body-md": [
+                              "hankenGrotesk", "sans-serif"
+                      ],
+                      "headline-lg": [
+                              "geist", "sans-serif"
+                      ],
+                      "label-md": [
+                              "geist", "sans-serif"
+                      ],
+                      "headline-sm": [
+                              "geist", "sans-serif"
+                      ],
+                      "body-sm": [
+                              "hankenGrotesk", "sans-serif"
+                      ],
+                      "headline-md": [
+                              "geist", "sans-serif"
+                      ],
+                      "display": [
+                              "geist", "sans-serif"
+                      ],
+                      "body-lg": [
+                              "hankenGrotesk", "sans-serif"
+                      ]
+              },
+              "fontSize": {
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-400-normal.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-500-normal.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-600-normal.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-700-normal.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .hero-pattern {
+            background-color: #f8f9ff;
+            background-image: radial-gradient(#d3e4fe 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar Component -->
+<nav class="bg-surface-container-lowest dark:bg-inverse-surface w-full top-0 sticky border-b border-outline-variant dark:border-on-surface-variant shadow-sm z-50">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-desktop h-16">
+<div class="flex items-center gap-lg">
+<a class="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight" href="#">EduMain</a>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary font-bold pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Introduction</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Examples</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Maintenance Types</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Resources</a>
+</div>
+<div class="flex items-center">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded hover:opacity-90 transition-opacity flex items-center gap-sm">
+                    Next Lesson <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="hero-pattern relative overflow-hidden py-xxl md:py-32 border-b border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-desktop relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 flex flex-col gap-lg">
+<div class="inline-flex items-center gap-sm bg-surface-container-high text-primary px-sm py-xs rounded-full font-label-md text-label-md w-max">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                        Module 1: Foundations
+                    </div>
+<h1 class="font-display text-display text-primary tracking-tight">
+                        Software <br/> Maintenance
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                        The process of modifying a software system after delivery to correct faults, improve performance, or adapt it to a changed environment. It's not just fixing bugs; it's about extending the life and value of your digital assets.
+                    </p>
+</div>
+<div class="md:col-span-5 relative">
+<div class="absolute inset-0 bg-primary-fixed-dim rounded-2xl blur-3xl opacity-30 mix-blend-multiply"></div>
+<div class="bg-surface-container-lowest rounded-xl shadow-lg border border-surface-variant p-lg relative z-10 flex flex-col gap-md transform rotate-1 hover:rotate-0 transition-transform duration-300">
+<div class="flex items-center justify-between border-b border-surface-variant pb-sm">
+<div class="flex gap-xs">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<div class="w-3 h-3 rounded-full bg-surface-tint"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">system_status.log</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant space-y-2 bg-slate-900 text-slate-300 p-md rounded-lg overflow-x-auto">
+<p><span class="text-tertiary-fixed-dim">[INFO]</span> Initializing maintenance protocols...</p>
+<p><span class="text-secondary-fixed-dim">[SCAN]</span> Detecting environmental shifts...</p>
+<p><span class="text-error-container">[WARN]</span> Deprecated API usage identified.</p>
+<p><span class="text-primary-fixed-dim">[ACTION]</span> Applying adaptive patch v2.4.1</p>
+<p class="text-emerald-400">[SUCCESS] System optimized. Uptime: 99.99%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why it matters -->
+<section class="py-xxl bg-surface-container-lowest">
+<div class="max-w-max-width mx-auto px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-md">Why Maintenance Matters</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Software is living code. Without ongoing care, it succumbs to entropy, becoming slower, less secure, and increasingly incompatible with modern workflows.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl p-lg border border-surface-container-highest shadow-sm hover:border-primary transition-colors duration-200 group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 0;">build</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Corrective</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fixing discovered defects or bugs to ensure the software functions exactly as intended originally.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl p-lg border border-surface-container-highest shadow-sm hover:border-primary transition-colors duration-200 group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 0;">speed</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Perfective</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enhancing performance, maintainability, or adding new features to improve user experience.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-xl p-lg border border-surface-container-highest shadow-sm hover:border-primary transition-colors duration-200 group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-md group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 0;">sync_alt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Adaptive</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Modifying the system to keep it usable in a changing or evolving environment (e.g., OS updates).</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container dark:bg-on-surface w-full mt-xxl border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-max-width mx-auto px-margin-desktop py-xl">
+<div>
+<a class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed-dim tracking-tight block mb-md" href="#">EduMain</a>
+<p class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed-dim">
+                    © 2024 EduMain Software Engineering Series
+                </p>
+</div>
+<div class="md:col-span-2 flex flex-wrap gap-x-lg gap-y-sm md:justify-end items-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Glossary</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Case Studies</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Bibliography</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

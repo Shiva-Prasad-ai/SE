@@ -1,0 +1,168 @@
+
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-desktop h-16">
+<a class="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">EduMain</a>
+<nav class="hidden md:flex items-center space-x-lg">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Introduction</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Examples</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary font-bold pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Maintenance Types</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Resources</a>
+</nav>
+<div class="flex items-center space-x-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-outline text-body-md">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface rounded-full border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-body-sm font-body-sm w-48 focus:w-64" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-primary-container transition-colors duration-200 shadow-sm active:scale-95">Next Lesson</button>
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined text-headline-sm">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl md:py-xxl">
+<!-- Hero Section -->
+<section class="mb-xxl text-center max-w-3xl mx-auto">
+<h1 class="font-display text-display text-on-surface mb-lg">The 4 Pillars of Software Maintenance</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                Software maintenance is not just about fixing bugs; it's a comprehensive strategy for ensuring longevity, performance, and adaptability in a rapidly changing technological landscape. Understanding these four distinct types is crucial for effective software engineering.
+            </p>
+</section>
+<!-- Bento Grid: Maintenance Types -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-xxl">
+<!-- Corrective -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm hover:border-primary transition-colors group">
+<div class="flex items-center mb-md">
+<div class="w-12 h-12 rounded-lg bg-error-container text-on-error-container flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-headline-md" data-weight="fill">bug_report</span>
+</div>
+<h2 class="font-headline-lg text-headline-sm md:text-headline-lg text-on-surface">Corrective</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                    The classic "bug fix." Corrective maintenance addresses errors and faults in the software that cause it to behave unexpectedly or incorrectly. It's about restoring normal operation.
+                </p>
+<div class="bg-surface-container rounded-lg p-md mt-auto">
+<h3 class="font-label-md text-label-md text-primary mb-sm uppercase tracking-wider">Example Scenario</h3>
+<p class="font-body-sm text-body-sm text-on-surface">Users report that the checkout button crashes the app on iOS 15. The team deploys a hotfix to resolve the null pointer exception causing the crash.</p>
+</div>
+</div>
+<!-- Adaptive -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm hover:border-primary transition-colors group">
+<div class="flex items-center mb-md">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-headline-md" data-weight="fill">swap_horiz</span>
+</div>
+<h2 class="font-headline-lg text-headline-sm md:text-headline-lg text-on-surface">Adaptive</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                    Adapting to change. This involves modifying the software to keep it compatible with changing environments, such as new operating systems, hardware, or third-party APIs.
+                </p>
+<div class="bg-surface-container rounded-lg p-md mt-auto">
+<h3 class="font-label-md text-label-md text-primary mb-sm uppercase tracking-wider">Example Scenario</h3>
+<p class="font-body-sm text-body-sm text-on-surface">Migrating the application's database from MySQL 5.7 to MySQL 8.0, requiring updates to SQL queries and connection libraries to maintain compatibility.</p>
+</div>
+</div>
+<!-- Perfective -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm hover:border-primary transition-colors group">
+<div class="flex items-center mb-md">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-headline-md" data-weight="fill">upgrade</span>
+</div>
+<h2 class="font-headline-lg text-headline-sm md:text-headline-lg text-on-surface">Perfective</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                    Enhancing the experience. Perfective maintenance focuses on improving performance, adding new features requested by users, or refining the user interface without changing core functionality.
+                </p>
+<div class="bg-surface-container rounded-lg p-md mt-auto">
+<h3 class="font-label-md text-label-md text-primary mb-sm uppercase tracking-wider">Example Scenario</h3>
+<p class="font-body-sm text-body-sm text-on-surface">Optimizing an image processing algorithm to run 30% faster based on user feedback that uploads were taking too long, improving overall user satisfaction.</p>
+</div>
+</div>
+<!-- Preventive -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm hover:border-primary transition-colors group">
+<div class="flex items-center mb-md">
+<div class="w-12 h-12 rounded-lg bg-surface-tint text-on-primary flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-headline-md" data-weight="fill">shield</span>
+</div>
+<h2 class="font-headline-lg text-headline-sm md:text-headline-lg text-on-surface">Preventive</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                    Future-proofing the codebase. This involves making changes to prevent future problems, such as refactoring messy code, updating documentation, or adding automated tests to improve maintainability.
+                </p>
+<div class="bg-surface-container rounded-lg p-md mt-auto">
+<h3 class="font-label-md text-label-md text-primary mb-sm uppercase tracking-wider">Example Scenario</h3>
+<p class="font-body-sm text-body-sm text-on-surface">Refactoring a complex monolithic authentication module into cleaner, modular microservices to make it easier for new developers to understand and update safely in the future.</p>
+</div>
+</div>
+</section>
+<!-- Comparison Table Section -->
+<section class="mb-xxl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-lg">Comparative Overview</h2>
+<div class="overflow-x-auto bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant">
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Type</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Primary Goal</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Trigger</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Impact Focus</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-md font-bold text-error">Corrective</td>
+<td class="p-md">Fix defects and restore functionality</td>
+<td class="p-md">User bug reports, system crashes</td>
+<td class="p-md">Immediate stability</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-md font-bold text-secondary">Adaptive</td>
+<td class="p-md">Ensure compatibility with new environments</td>
+<td class="p-md">OS updates, new hardware, API deprecations</td>
+<td class="p-md">Continued operation in changing landscape</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-md font-bold text-tertiary">Perfective</td>
+<td class="p-md">Improve performance or add features</td>
+<td class="p-md">User feedback, feature requests, performance metrics</td>
+<td class="p-md">User experience and satisfaction</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-bold text-primary">Preventive</td>
+<td class="p-md">Improve maintainability and prevent future issues</td>
+<td class="p-md">Code rot, technical debt accumulation</td>
+<td class="p-md">Long-term software health and developer velocity</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-xxl bg-surface-container dark:bg-on-surface border-t border-outline-variant dark:border-on-surface-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-max-width mx-auto px-margin-desktop py-xl">
+<div class="flex flex-col space-y-md">
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed-dim">EduMain</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant">
+                    Empowering the next generation of software engineers through clear, concise, and rigorous educational content.
+                </p>
+<p class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed-dim mt-auto">
+                    © 2024 EduMain Software Engineering Series
+                </p>
+</div>
+<div class="flex flex-col space-y-sm">
+<h4 class="font-label-md text-label-md text-on-surface dark:text-surface font-bold uppercase tracking-wider mb-sm">Resources</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Glossary</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Case Studies</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Bibliography</a>
+</div>
+<div class="flex flex-col space-y-sm">
+<h4 class="font-label-md text-label-md text-on-surface dark:text-surface font-bold uppercase tracking-wider mb-sm">Connect</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Contact Support</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">Twitter</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:underline hover:text-primary transition-all" href="#">GitHub</a>
+</div>
+</div>
+</footer>

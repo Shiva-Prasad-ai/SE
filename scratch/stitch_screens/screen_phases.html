@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Phases - EduMain</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-400-normal.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-500-normal.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-600-normal.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-700-normal.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        .grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Hexagon Layout Logic (Approximation for standard layout flow) */
+        .hex-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+        }
+        .hex-item {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        /* Top */
+        .hex-item:nth-child(1) { top: 10%; left: 50%; }
+        /* Top Right */
+        .hex-item:nth-child(2) { top: 30%; left: 85%; }
+        /* Bottom Right */
+        .hex-item:nth-child(3) { top: 70%; left: 85%; }
+        /* Bottom */
+        .hex-item:nth-child(4) { top: 90%; left: 50%; }
+        /* Bottom Left */
+        .hex-item:nth-child(5) { top: 70%; left: 15%; }
+        /* Top Left */
+        .hex-item:nth-child(6) { top: 30%; left: 15%; }
+        
+        .hex-item:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            z-index: 10;
+        }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#777682",
+                        "secondary": "#625e51",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed-dim": "#cabeff",
+                        "surface-container": "#eeeeee",
+                        "primary-fixed-dim": "#ffb59d",
+                        "secondary-fixed-dim": "#ccc6b6",
+                        "surface-container-highest": "#e2e2e2",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "tertiary": "#25106a",
+                        "on-tertiary-fixed-variant": "#48398d",
+                        "on-primary-fixed-variant": "#842600",
+                        "secondary-fixed": "#e9e2d1",
+                        "primary-container": "#6d1e00",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-fixed": "#390b00",
+                        "secondary-container": "#e9e2d1",
+                        "surface-container-low": "#f3f3f4",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#686457",
+                        "surface": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-fixed": "#1e1c11",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#a798f3",
+                        "on-surface-variant": "#474651",
+                        "on-secondary-fixed-variant": "#4a473a",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#ac3401",
+                        "outline-variant": "#c8c5d3",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed": "#e6deff",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-fixed": "#1c0061",
+                        "surface-container-high": "#e8e8e8",
+                        "primary-fixed": "#ffdbd0",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ff7e53",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#3b2b80",
+                        "background": "#f9f9f9",
+                        "primary": "#481100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1280px",
+                        "margin-desktop": "48px",
+                        "md": "16px",
+                        "xxl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display": ["Geist"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "body-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col grid-pattern">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest border-b border-outline-variant shadow-sm w-full top-0 sticky z-50">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-desktop h-16">
+<div class="flex items-center gap-lg">
+<a class="font-display text-headline-md font-bold text-primary" href="#">EduMain</a>
+<div class="hidden md:flex items-center gap-md ml-xl">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Introduction</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Examples</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary font-bold pb-1" href="#">Maintenance Types</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-lg hover:opacity-90 transition-opacity">
+                    Next Lesson
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-max-width mx-auto px-margin-desktop py-xxl flex flex-col relative">
+<!-- Header Section -->
+<header class="text-center mb-xl relative z-10">
+<h1 class="font-display text-display text-primary mb-md">Maintenance Phases</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Explore the cyclical process of software maintenance. Interact with the visualization below to delve into each phase of the engineering lifecycle.
+            </p>
+</header>
+<!-- Visualization Area -->
+<section class="relative w-full min-h-[600px] flex items-center justify-center mb-xxl">
+<!-- 3D Background Animation -->
+<div class="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden opacity-50 mix-blend-multiply">
+<!-- STITCH_THREEJS_START:ANIMATION_7 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_7" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_7');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0x312e81, 1); // Using design system primary color
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// The Ring
+const geometry = new THREE.TorusGeometry(3.5, 0.05, 16, 100);
+const material = new THREE.MeshPhongMaterial({ 
+    color: 0x312e81, 
+    emissive: 0x312e81,
+    emissiveIntensity: 0.5,
+    shininess: 100 
+});
+const ring = new THREE.Mesh(geometry, material);
+ring.rotation.x = Math.PI / 2;
+scene.add(ring);
+
+// Orbiting particles/nodes to represent the phases
+const nodesCount = 6;
+const nodes = [];
+for (let i = 0; i < nodesCount; i++) {
+    const nodeGeom = new THREE.SphereGeometry(0.15, 32, 32);
+    const nodeMat = new THREE.MeshPhongMaterial({ color: 0x6366f1 });
+    const node = new THREE.Mesh(nodeGeom, nodeMat);
+    
+    const angle = (i / nodesCount) * Math.PI * 2;
+    node.position.x = Math.cos(angle) * 3.5;
+    node.position.z = Math.sin(angle) * 3.5;
+    
+    ring.add(node);
+    nodes.push(node);
+}
+
+camera.position.z = 8;
+
+let mouseX = 0;
+let mouseY = 0;
+let targetRotationX = 0;
+let targetRotationY = 0;
+
+window.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+const animate = () => {
+    requestAnimationFrame(animate);
+    
+    // Auto-rotation
+    ring.rotation.z += 0.005;
+    
+    // Mouse control influence
+    targetRotationY = mouseX * 0.5;
+    targetRotationX = mouseY * 0.5;
+    
+    ring.rotation.x += (targetRotationX + Math.PI/2.5 - ring.rotation.x) * 0.05;
+    ring.rotation.y += (targetRotationY - ring.rotation.y) * 0.05;
+
+    renderer.render(scene, camera);
+};
+
+window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth || window.innerWidth;
+    const newHeight = container.clientHeight || window.innerHeight;
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(newWidth, newHeight);
+});
+
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_7 -->
+</div>
+<!-- Hexagonal Interactive Nodes -->
+<div class="hex-container z-10">
+<!-- 1. Problem Identification -->
+<a class="hex-item group flex flex-col items-center gap-sm text-center w-32 cursor-pointer" href="#details-identification">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center border border-outline-variant group-hover:border-primary group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]">search</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Problem Identification</span>
+</a>
+<!-- 2. Problem Assessment -->
+<a class="hex-item group flex flex-col items-center gap-sm text-center w-32 cursor-pointer" href="#details-assessment">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center border border-outline-variant group-hover:border-primary group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]">assessment</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Problem Assessment</span>
+</a>
+<!-- 3. Designing -->
+<a class="hex-item group flex flex-col items-center gap-sm text-center w-32 cursor-pointer" href="#details-designing">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center border border-outline-variant group-hover:border-primary group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]">design_services</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Designing</span>
+</a>
+<!-- 4. Execution Phase -->
+<a class="hex-item group flex flex-col items-center gap-sm text-center w-32 cursor-pointer" href="#details-execution">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center border border-outline-variant group-hover:border-primary group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]">integration_instructions</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Execution Phase</span>
+</a>
+<!-- 5. Testing -->
+<a class="hex-item group flex flex-col items-center gap-sm text-center w-32 cursor-pointer" href="#details-testing">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center border border-outline-variant group-hover:border-primary group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]">bug_report</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Testing</span>
+</a>
+<!-- 6. Acceptance Test -->
+<a class="hex-item group flex flex-col items-center gap-sm text-center w-32 cursor-pointer" href="#details-acceptance">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center border border-outline-variant group-hover:border-primary group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]">fact_check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Acceptance Test</span>
+</a>
+<!-- Central Focus (Optional, for visual anchor) -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center opacity-40">
+<span class="material-symbols-outlined text-[64px] text-outline">sync</span>
+<span class="font-label-md text-label-md text-outline mt-sm">Lifecycle</span>
+</div>
+</div>
+</section>
+<!-- Detailed Explanations (Bento Grid Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter z-10">
+<div class="glass-panel p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow" id="details-identification">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Problem Identification</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    The initial phase involves receiving modification requests from users or system logs. It requires classifying the problem as corrective, adaptive, or perfective maintenance.
+                </p>
+</div>
+<div class="glass-panel p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow" id="details-assessment">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">assessment</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Problem Assessment</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Analyzing the identified problem to determine its impact on the system. This includes estimating costs, assessing risks, and planning resources needed for the fix.
+                </p>
+</div>
+<div class="glass-panel p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow" id="details-designing">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">design_services</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Designing</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Creating a technical solution to address the assessed problem. This phase often involves updating architectural documents and planning integration points.
+                </p>
+</div>
+<div class="glass-panel p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow" id="details-execution">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">integration_instructions</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Execution Phase</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    The actual implementation of the designed solution. Engineers write code, modify existing structures, and ensure the new logic aligns with system constraints.
+                </p>
+</div>
+<div class="glass-panel p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow" id="details-testing">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Testing</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Rigorous evaluation of the modified system. This includes unit testing, integration testing, and regression testing to ensure no existing functionality was broken.
+                </p>
+</div>
+<div class="glass-panel p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow" id="details-acceptance">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Acceptance Test</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Final validation by stakeholders or users. The system is reviewed to confirm that the original problem was resolved satisfactorily before deployment.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container w-full mt-xxl border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-max-width mx-auto px-margin-desktop py-xl">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">EduMain</span>
+<span class="font-body-sm text-body-sm text-secondary">© 2024 EduMain Software Engineering Series</span>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-sm text-body-sm text-secondary hover:underline hover:text-primary transition-all" href="#">Glossary</a>
+<a class="font-body-sm text-body-sm text-secondary hover:underline hover:text-primary transition-all" href="#">Case Studies</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-sm text-body-sm text-secondary hover:underline hover:text-primary transition-all" href="#">Bibliography</a>
+<a class="font-body-sm text-body-sm text-secondary hover:underline hover:text-primary transition-all" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple interaction to highlight cards when clicking hex nodes
+        document.querySelectorAll('.hex-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Highlight logic could go here to emphasize the selected phase card
+                const targetId = this.getAttribute('href').substring(1);
+                const targetCard = document.getElementById(targetId);
+                
+                if(targetCard) {
+                    // Brief highlight effect
+                    targetCard.classList.add('ring-2', 'ring-primary');
+                    setTimeout(() => {
+                        targetCard.classList.remove('ring-2', 'ring-primary');
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body></html>

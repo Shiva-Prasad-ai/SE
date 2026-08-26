@@ -1,0 +1,98 @@
+
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky z-50 bg-surface-container-lowest border-b border-outline-variant shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-desktop h-16">
+<div class="font-display text-headline-md font-bold text-primary">
+                EduMain
+            </div>
+<!-- Desktop Nav -->
+<ul class="hidden md:flex items-center gap-lg">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Introduction</a></li>
+<li><a class="font-label-md text-label-md text-primary border-b-2 border-primary font-bold pb-1 opacity-80 scale-95 transition-all" href="#">Examples</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Maintenance Types</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Resources</a></li>
+</ul>
+<div class="flex items-center gap-md">
+<button class="hidden md:flex items-center gap-sm bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-lg hover:bg-primary-container transition-colors duration-200">
+<span>Next Lesson</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl md:py-xxl w-full space-y-xxl">
+<!-- Hero Section -->
+<header class="text-center max-w-3xl mx-auto space-y-md">
+<div class="inline-block bg-surface-container-high text-primary px-sm py-xs rounded-full font-label-md text-label-md mb-sm">
+                Case Study: Corrective &amp; Adaptive Maintenance
+            </div>
+<h1 class="font-display text-display text-primary">The "Heartbleed" Response</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                A critical look at how an enterprise application executed an emergency patch and adapted its infrastructure following a major security vulnerability, ensuring user trust and system stability.
+            </p>
+</header>
+<!-- Before & After Bento Grid -->
+<section class="space-y-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface border-b border-outline-variant pb-sm">Before &amp; After: Architecture Shift</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Before Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm relative overflow-hidden group hover:border-error transition-colors duration-300">
+<div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-error" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-headline-sm text-headline-sm text-error">Pre-Patch Architecture</h3>
+</div>
+<div class="space-y-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Legacy systems relied on outdated OpenSSL libraries, exposing memory contents to malicious requests. The monolithic design made targeted patching difficult.</p>
+<div class="bg-surface-container p-sm rounded-md font-code-sm text-code-sm text-on-surface overflow-x-auto border border-outline-variant">
+<code>// Vulnerable Implementation
+HeartbeatResponse req = get_heartbeat(payload, length);
+if (length &gt; actual_payload_size) {
+  // Memory leak occurs here
+  return send_memory(buffer, length); 
+}</code>
+</div>
+</div>
+</div>
+<!-- After Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm relative overflow-hidden group hover:border-secondary-container transition-colors duration-300">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-container"></div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary">Post-Patch &amp; Adaptation</h3>
+</div>
+<div class="space-y-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Systems updated to secure libraries. Concurrently, a shift towards microservices was initiated to isolate dependencies and facilitate faster rollouts of future security updates.</p>
+<div class="bg-[#1e293b] text-[#e2e8f0] p-sm rounded-md font-code-sm text-code-sm overflow-x-auto border border-outline-variant">
+<code>// Patched Implementation
+HeartbeatResponse req = get_heartbeat(payload, length);
+// Strict bounds checking added
+if (1 + 2 + payload_length &gt; MAX_RECORD_SIZE) {
+  return DROP_CONNECTION;
+}</code>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-xxl bg-surface-container border-t border-outline-variant py-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-max-width mx-auto px-margin-desktop">
+<div class="flex flex-col space-y-md">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">EduMain</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 EduMain Software Engineering Series</p>
+</div>
+<div class="md:col-span-2 flex justify-end gap-xl">
+<ul class="flex flex-col gap-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Glossary</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Case Studies</a></li>
+</ul>
+<ul class="flex flex-col gap-sm">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Bibliography</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:underline hover:text-primary transition-all" href="#">Contact Support</a></li>
+</ul>
+</div>
+</div>
+</footer>
