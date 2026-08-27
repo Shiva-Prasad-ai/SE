@@ -4,6 +4,18 @@ import * as THREE from 'three';
 export function PhasesScreen({ onGoToCaseStudy }) {
   const mountRef = useRef(null);
   const [selectedPhase, setSelectedPhase] = useState(null);
+  const [activeModalPhase, setActiveModalPhase] = useState(null);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveModalPhase(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Exact Regular Hexagon Coordinates (Pointy-top Hexagon: 0°, 60°, 120°, 180°, 240°, 300°)
   const phases = [
@@ -13,6 +25,13 @@ export function PhasesScreen({ onGoToCaseStudy }) {
       icon: 'search',
       badge: 'Phase 1',
       description: 'The initial phase involves receiving modification requests from users or system logs. It requires classifying the problem as corrective, adaptive, or perfective maintenance.',
+      activities: [
+        'User defect report logging',
+        'System log analysis & monitoring',
+        'Severity classification (Bug vs Feature)',
+        'Initial triage & prioritization'
+      ],
+      output: 'Maintenance Request Ticket & Priority Assignment',
       top: '10%',
       left: '50%'
     },
@@ -22,6 +41,13 @@ export function PhasesScreen({ onGoToCaseStudy }) {
       icon: 'assessment',
       badge: 'Phase 2',
       description: 'Once the problem is identified, the development team investigates it. They determine: What is causing the problem? Which components are affected?',
+      activities: [
+        'Root cause investigation',
+        'Component dependency analysis',
+        'Cost and effort estimation',
+        'Risk & side-effect assessment'
+      ],
+      output: 'Impact Assessment Report & Resource Allocation.',
       top: '30%',
       left: '84.6%'
     },
@@ -30,7 +56,14 @@ export function PhasesScreen({ onGoToCaseStudy }) {
       title: 'Designing',
       icon: 'design_services',
       badge: 'Phase 3',
-      description: 'After understanding the problem, developers design a technical solution. This determines how the software will be modified. It may involve: Designing changes to existing modules, Creating new components',
+      description: 'After understanding the problem, developers design a technical solution. This determines how the software will be modified. It may involve: Designing changes to existing modules, Creating new components.',
+      activities: [
+        'Architecture & module redesign',
+        'Database schema modifications',
+        'API contract updates',
+        'Test case design'
+      ],
+      output: 'Revised Technical Design Document & Test Specs.',
       top: '70%',
       left: '84.6%'
     },
@@ -40,6 +73,13 @@ export function PhasesScreen({ onGoToCaseStudy }) {
       icon: 'integration_instructions',
       badge: 'Phase 4',
       description: 'The actual implementation of the designed solution. Engineers write code, modify existing structures, and ensure the new logic aligns with system constraints.',
+      activities: [
+        'Code refactoring & bug fixing',
+        'New logic implementation',
+        'Version control branching & commits',
+        'Peer code review'
+      ],
+      output: 'Updated Source Code & Code Review Approval.',
       top: '90%',
       left: '50%'
     },
@@ -49,6 +89,13 @@ export function PhasesScreen({ onGoToCaseStudy }) {
       icon: 'bug_report',
       badge: 'Phase 5',
       description: 'Rigorous evaluation of the modified system. This includes unit testing, integration testing, and regression testing to ensure no existing functionality was broken.',
+      activities: [
+        'Automated unit & integration test run',
+        'Regression testing execution',
+        'Security & performance check',
+        'Bug verification'
+      ],
+      output: 'Test Report & QA Approval.',
       top: '70%',
       left: '15.4%'
     },
@@ -58,6 +105,13 @@ export function PhasesScreen({ onGoToCaseStudy }) {
       icon: 'fact_check',
       badge: 'Phase 6',
       description: 'Final validation by stakeholders or users. The system is reviewed to confirm that the original problem was resolved satisfactorily before deployment.',
+      activities: [
+        'User Acceptance Testing (UAT)',
+        'Staging environment validation',
+        'Stakeholder review & approval',
+        'Production release deployment'
+      ],
+      output: 'Final UAT Approval & Production Release Note.',
       top: '30%',
       left: '15.4%'
     }
@@ -219,12 +273,9 @@ export function PhasesScreen({ onGoToCaseStudy }) {
     };
   }, []);
 
-  const handleCardClick = (id) => {
-    setSelectedPhase(id === selectedPhase ? null : id);
-    const element = document.getElementById(`phase-card-${id}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  const handleCardClick = (phase) => {
+    setSelectedPhase(phase.id);
+    setActiveModalPhase(phase);
   };
 
   return (
@@ -235,7 +286,7 @@ export function PhasesScreen({ onGoToCaseStudy }) {
           Maintenance Phases
         </h1>
         <p className="font-body-lg text-[18px] text-[#595147] leading-relaxed">
-          Explore the cyclical process of software maintenance. Interact with the visualization below to delve into each phase of the engineering lifecycle.
+          Explore the cyclical process of software maintenance. Click on any phase card or node to expand it into full screen view.
         </p>
       </header>
 
@@ -274,7 +325,7 @@ export function PhasesScreen({ onGoToCaseStudy }) {
             return (
               <button
                 key={phase.id}
-                onClick={() => handleCardClick(phase.id)}
+                onClick={() => handleCardClick(phase)}
                 style={{ top: phase.top, left: phase.left }}
                 className={`absolute transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-center w-36 cursor-pointer z-20 transition-all duration-300 group hover:scale-110 ${
                   isSelected ? 'scale-110' : ''
@@ -309,19 +360,19 @@ export function PhasesScreen({ onGoToCaseStudy }) {
             <div
               key={phase.id}
               id={`phase-card-${phase.id}`}
-              onClick={() => setSelectedPhase(isSelected ? null : phase.id)}
-              className={`bg-[#ffffff] p-6 rounded-xl border shadow-sm transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+              onClick={() => handleCardClick(phase)}
+              className={`bg-[#ffffff] p-6 rounded-xl border shadow-sm transition-all duration-300 cursor-pointer flex flex-col justify-between group hover:-translate-y-1 ${
                 isSelected
                   ? 'border-[#ff6f3d] ring-2 ring-[#ff6f3d] bg-[#f3ecdb]/30'
-                  : 'border-[#dbd2c3] hover:border-[#ff6f3d] hover:shadow-md'
+                  : 'border-[#dbd2c3] hover:border-[#ff6f3d] hover:shadow-lg'
               }`}
             >
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f3ecdb] flex items-center justify-center text-[#ff6f3d]">
+                  <div className="w-10 h-10 rounded-full bg-[#f3ecdb] group-hover:bg-[#ffece4] flex items-center justify-center text-[#ff6f3d] transition-colors">
                     <span className="material-symbols-outlined text-[24px]">{phase.icon}</span>
                   </div>
-                  <h3 className="font-headline-sm text-[18px] text-[#2b241f] font-semibold">
+                  <h3 className="font-headline-sm text-[18px] text-[#2b241f] font-semibold group-hover:text-[#ff6f3d] transition-colors">
                     {phase.title}
                   </h3>
                 </div>
@@ -330,17 +381,98 @@ export function PhasesScreen({ onGoToCaseStudy }) {
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-[#f3ecdb] text-[13px] text-[#8071c9] font-medium flex items-center justify-between">
-                <span>{isSelected ? 'Active Phase' : 'Select Phase'}</span>
-                <span className="material-symbols-outlined text-[16px]">
-                  {isSelected ? 'check_circle' : 'chevron_right'}
+                <span>Click to Expand Card</span>
+                <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">
+                  open_in_full
                 </span>
               </div>
             </div>
           );
         })}
       </section>
+
+      {/* Screen-Fitting Fullscreen Blurred Modal Overlay */}
+      {activeModalPhase && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-[#2b241f]/60 backdrop-blur-md transition-all duration-300 animate-fadeIn cursor-pointer"
+          onClick={() => setActiveModalPhase(null)}
+        >
+          <div
+            className="bg-[#ffffff] border border-[#dbd2c3] rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative space-y-6 cursor-default transition-all transform scale-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top Bar: Badge & Close Button */}
+            <div className="flex items-center justify-between">
+              <span className="bg-[#ffece4] text-[#ff6f3d] px-4 py-1.5 rounded-full font-label-md text-[14px] font-bold border border-[#ff6f3d]/20">
+                {activeModalPhase.badge}
+              </span>
+              <button
+                onClick={() => setActiveModalPhase(null)}
+                className="w-10 h-10 rounded-full bg-[#f3ecdb] hover:bg-[#e6dfcd] text-[#2b241f] flex items-center justify-center cursor-pointer transition-colors"
+                aria-label="Close card"
+              >
+                <span className="material-symbols-outlined text-[24px]">close</span>
+              </button>
+            </div>
+
+            {/* Header: Large Icon & Title */}
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-[#ff6f3d] text-white flex items-center justify-center shadow-lg shrink-0">
+                <span className="material-symbols-outlined text-[36px]">{activeModalPhase.icon}</span>
+              </div>
+              <div>
+                <h2 className="font-display text-[28px] sm:text-[36px] font-bold text-[#2b241f] leading-tight">
+                  {activeModalPhase.title}
+                </h2>
+                <span className="text-[14px] font-label-md text-[#8071c9] font-medium">
+                  Software Maintenance Lifecycle Phase
+                </span>
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className="font-body-lg text-[18px] sm:text-[20px] text-[#595147] leading-relaxed">
+              {activeModalPhase.description}
+            </p>
+
+            {/* Additional Details Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="bg-[#fcfaf7] border border-[#e6dfcd] rounded-xl p-5 space-y-2">
+                <h4 className="font-label-md text-[13px] uppercase tracking-wider text-[#ff6f3d] font-bold flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-[18px]">checklist</span>
+                  Key Activities
+                </h4>
+                <ul className="space-y-2 text-[15px] text-[#595147] font-medium">
+                  {activeModalPhase.activities.map((act, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-[#ff6f3d] font-bold">•</span>
+                      <span>{act}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-[#fcfaf7] border border-[#e6dfcd] rounded-xl p-5 space-y-2">
+                <h4 className="font-label-md text-[13px] uppercase tracking-wider text-[#8071c9] font-bold flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-[18px]">task</span>
+                  Phase Deliverable
+                </h4>
+                <p className="text-[15px] text-[#595147] font-medium leading-relaxed">
+                  {activeModalPhase.output}
+                </p>
+              </div>
+            </div>
+
+            {/* Footer hint */}
+            <div className="text-center text-[13px] text-[#8a8073] pt-4 border-t border-[#f3ecdb]">
+              Click outside card or press Esc to close
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
 
 export default PhasesScreen;
+

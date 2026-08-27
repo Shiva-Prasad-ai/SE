@@ -41,7 +41,7 @@ export function Footer({ setActiveTab }) {
             onClick={() => setActiveTab && setActiveTab('examples')}
             className="font-body-sm text-[14px] text-[#595147] hover:underline hover:text-[#ff6f3d] transition-all cursor-pointer"
           >
-            Examples
+            Example
           </button>
           <button 
             onClick={() => setActiveTab && setActiveTab('resources')}

@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export function CaseStudyScreen({ onRestartSeries }) {
+  const [activeModalPhase, setActiveModalPhase] = useState(null);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveModalPhase(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const examplePhases = [
     {
       num: '1',
@@ -86,13 +99,13 @@ export function CaseStudyScreen({ onRestartSeries }) {
     <main className="flex-grow max-w-[1280px] mx-auto px-4 md:px-[48px] py-10 md:py-16 w-full space-y-16">
       {/* Header Section */}
       <header className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-block bg-[#f3ecdb] text-[#ff6f3d] px-3.5 py-1 rounded-full font-label-md text-[14px] font-semibold border border-[#e6dfcd]">
+        <div className="inline-block bg-[#f3ecdb] text-[#ff6f3d] px-3.5 py-1 rounded-full font-label-md text-[18px] font-semibold border border-[#e6dfcd]">
           Example Scenario: Incorrect Delivery Charges
         </div>
-        <h1 className="font-display text-[36px] md:text-[52px] leading-[1.1] text-[#ff6f3d] font-bold">
+        <h1 className="font-display text-[40px] md:text-[56px] leading-[1.1] text-[#ff6f3d] font-bold">
           Software Maintenance in Action
         </h1>
-        <p className="font-body-lg text-[18px] text-[#595147] leading-relaxed">
+        <p className="font-body-lg text-[22px] text-[#595147] leading-relaxed">
           A real-world walkthrough illustrating how a software engineering team executes all 6 maintenance phases to diagnose, patch, test, and release a fix for an incorrect delivery fee bug.
         </p>
       </header>
@@ -102,28 +115,31 @@ export function CaseStudyScreen({ onRestartSeries }) {
         {examplePhases.map((phase) => (
           <div key={phase.num} className={`relative flex flex-col ${phase.gridClass}`}>
             {/* Phase Card */}
-            <div className="bg-[#ffffff] rounded-2xl border border-[#dbd2c3] p-6 shadow-sm hover:border-[#ff6f3d] transition-all flex flex-col justify-between h-full space-y-4 relative z-10">
+            <div
+              onClick={() => setActiveModalPhase(phase)}
+              className="bg-[#ffffff] rounded-2xl border border-[#dbd2c3] p-6 shadow-sm hover:border-[#ff6f3d] hover:shadow-md transition-all flex flex-col justify-between h-full space-y-4 relative z-10 cursor-pointer group"
+            >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#ff6f3d] text-white flex items-center justify-center font-bold text-[16px] shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-[#ff6f3d] text-white flex items-center justify-center font-bold text-[20px] shadow-sm">
                       {phase.num}
                     </div>
-                    <h2 className="font-headline-lg text-[20px] md:text-[22px] text-[#2b241f] font-bold">
+                    <h2 className="font-headline-lg text-[24px] md:text-[26px] text-[#2b241f] font-bold">
                       {phase.title}
                     </h2>
                   </div>
                   <div className="w-10 h-10 rounded-lg bg-[#f3ecdb] text-[#ff6f3d] flex items-center justify-center">
-                    <span className="material-symbols-outlined text-[24px]">{phase.icon}</span>
+                    <span className="material-symbols-outlined text-[28px]">{phase.icon}</span>
                   </div>
                 </div>
 
-                <p className="font-body-md text-[14px] text-[#595147] leading-relaxed font-medium mb-3">
+                <p className="font-body-md text-[18px] text-[#595147] leading-relaxed font-medium mb-3">
                   {phase.intro}
                 </p>
 
                 {phase.details && (
-                  <div className="space-y-1.5 text-[13px] text-[#595147]">
+                  <div className="space-y-1.5 text-[17px] text-[#595147]">
                     {phase.details.map((d, i) => (
                       <p key={i}>{d}</p>
                     ))}
@@ -131,13 +147,13 @@ export function CaseStudyScreen({ onRestartSeries }) {
                 )}
 
                 {phase.examineTitle && (
-                  <p className="font-label-md text-[12px] text-[#ff6f3d] font-bold mt-2 uppercase tracking-wider">
+                  <p className="font-label-md text-[16px] text-[#ff6f3d] font-bold mt-2 uppercase tracking-wider">
                     {phase.examineTitle}
                   </p>
                 )}
 
                 {phase.bullets && (
-                  <ul className="space-y-1 mt-2 pl-1 text-[13px] text-[#2b241f]">
+                  <ul className="space-y-1 mt-2 pl-1 text-[17px] text-[#2b241f]">
                     {phase.bullets.map((b, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="text-[#ff6f3d] font-bold">•</span>
@@ -148,7 +164,7 @@ export function CaseStudyScreen({ onRestartSeries }) {
                 )}
 
                 {phase.numberedSteps && (
-                  <ol className="space-y-1 mt-2 pl-1 text-[13px] text-[#2b241f]">
+                  <ol className="space-y-1 mt-2 pl-1 text-[17px] text-[#2b241f]">
                     {phase.numberedSteps.map((s, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="font-bold text-[#ff6f3d]">{i + 1}.</span>
@@ -159,7 +175,7 @@ export function CaseStudyScreen({ onRestartSeries }) {
                 )}
 
                 {phase.detailsText && (
-                  <p className="font-body-sm text-[13px] text-[#595147] mt-2 leading-relaxed">
+                  <p className="font-body-sm text-[17px] text-[#595147] mt-2 leading-relaxed">
                     {phase.detailsText}
                   </p>
                 )}
@@ -167,7 +183,7 @@ export function CaseStudyScreen({ onRestartSeries }) {
                 {phase.tags && (
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {phase.tags.map((t, i) => (
-                      <span key={i} className="bg-[#f3ecdb] text-[#ff6f3d] px-2.5 py-0.5 rounded-full text-[11px] font-label-md font-semibold border border-[#e6dfcd]">
+                      <span key={i} className="bg-[#f3ecdb] text-[#ff6f3d] px-2.5 py-0.5 rounded-full text-[15px] font-label-md font-semibold border border-[#e6dfcd]">
                         {t}
                       </span>
                     ))}
@@ -175,27 +191,27 @@ export function CaseStudyScreen({ onRestartSeries }) {
                 )}
 
                 {phase.highlight && (
-                  <div className="bg-[#ffece4] border-l-4 border-[#ff6f3d] p-2.5 rounded-r-lg mt-3 text-[12px] text-[#2b241f] italic font-medium">
+                  <div className="bg-[#ffece4] border-l-4 border-[#ff6f3d] p-2.5 rounded-r-lg mt-3 text-[16px] text-[#2b241f] italic font-medium">
                     {phase.highlight}
                   </div>
                 )}
 
                 {phase.discovery && (
-                  <div className="bg-[#f3ecdb] p-2.5 rounded-lg mt-3 text-[12px] text-[#2b241f] border border-[#e6dfcd] font-medium">
+                  <div className="bg-[#f3ecdb] p-2.5 rounded-lg mt-3 text-[16px] text-[#2b241f] border border-[#e6dfcd] font-medium">
                     {phase.discovery}
                   </div>
                 )}
 
                 {phase.conclusion && (
-                  <p className="font-body-sm text-[12px] text-[#595147] mt-2 leading-relaxed italic">
+                  <p className="font-body-sm text-[16px] text-[#595147] mt-2 leading-relaxed italic">
                     {phase.conclusion}
                   </p>
                 )}
               </div>
 
-              <div className="pt-2 border-t border-[#f3ecdb] flex items-center justify-between text-[11px] text-[#8071c9] font-medium">
-                <span>Phase {phase.num} of 6</span>
-                <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+              <div className="pt-3 border-t border-[#f3ecdb] flex items-center justify-between text-[15px] text-[#8071c9] font-medium">
+                <span>Phase {phase.num} of 6 • Click to Expand</span>
+                <span className="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">open_in_full</span>
               </div>
             </div>
 
@@ -228,29 +244,133 @@ export function CaseStudyScreen({ onRestartSeries }) {
         ))}
       </section>
 
-      {/* Clean Thank You Completion Card */}
-      <section className="bg-[#f3ecdb] rounded-2xl p-10 md:p-12 border border-[#e6dfcd] text-center space-y-6 max-w-3xl mx-auto shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#ff6f3d] text-white flex items-center justify-center mx-auto shadow-md">
-          <span className="material-symbols-outlined text-[36px]">auto_awesome</span>
-        </div>
-        <h3 className="font-display text-[36px] md:text-[44px] text-[#ff6f3d] font-bold tracking-tight">
-          Thank You!
-        </h3>
-        <p className="font-headline-sm text-[18px] md:text-[20px] text-[#2b241f] font-semibold">
-          You completed Module 1 of the Software Maintenance Series.
-        </p>
-        <div>
-          <button
-            onClick={onRestartSeries}
-            className="bg-[#ff6f3d] text-white font-label-md px-8 py-3.5 rounded-xl hover:bg-[#e05524] transition-all font-medium inline-flex items-center gap-2 shadow-md cursor-pointer text-[15px]"
+      {/* Screen-Fitting Fullscreen Blurred Modal Overlay for Example Cards */}
+      {activeModalPhase && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-[#2b241f]/60 backdrop-blur-md transition-all duration-300 animate-fadeIn cursor-pointer"
+          onClick={() => setActiveModalPhase(null)}
+        >
+          <div
+            className="bg-[#ffffff] border border-[#dbd2c3] rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative space-y-6 cursor-default transition-all transform scale-100"
+            onClick={(e) => e.stopPropagation()}
           >
-            <span className="material-symbols-outlined text-[20px]">restart_alt</span>
-            <span>Restart Module Series</span>
-          </button>
+            {/* Top Bar: Badge & Close Button */}
+            <div className="flex items-center justify-between">
+              <span className="bg-[#ffece4] text-[#ff6f3d] px-4 py-1.5 rounded-full font-label-md text-[16px] font-bold border border-[#ff6f3d]/20">
+                Phase {activeModalPhase.num} of 6
+              </span>
+              <button
+                onClick={() => setActiveModalPhase(null)}
+                className="w-10 h-10 rounded-full bg-[#f3ecdb] hover:bg-[#e6dfcd] text-[#2b241f] flex items-center justify-center cursor-pointer transition-colors"
+                aria-label="Close card"
+              >
+                <span className="material-symbols-outlined text-[24px]">close</span>
+              </button>
+            </div>
+
+            {/* Header: Icon & Title */}
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-[#ff6f3d] text-white flex items-center justify-center shadow-lg shrink-0">
+                <span className="material-symbols-outlined text-[36px]">{activeModalPhase.icon}</span>
+              </div>
+              <div>
+                <h2 className="font-display text-[28px] sm:text-[36px] font-bold text-[#2b241f] leading-tight">
+                  {activeModalPhase.title}
+                </h2>
+                <span className="text-[16px] font-label-md text-[#8071c9] font-medium">
+                  Real-World Example Breakdown
+                </span>
+              </div>
+            </div>
+
+            {/* Intro */}
+            <p className="font-body-lg text-[20px] text-[#595147] leading-relaxed font-medium">
+              {activeModalPhase.intro}
+            </p>
+
+            {/* Content Details */}
+            <div className="space-y-4 bg-[#fcfaf7] border border-[#e6dfcd] rounded-xl p-6">
+              {activeModalPhase.details && (
+                <div className="space-y-2 text-[17px] text-[#595147]">
+                  {activeModalPhase.details.map((d, i) => (
+                    <p key={i}>{d}</p>
+                  ))}
+                </div>
+              )}
+
+              {activeModalPhase.examineTitle && (
+                <p className="font-label-md text-[16px] text-[#ff6f3d] font-bold uppercase tracking-wider">
+                  {activeModalPhase.examineTitle}
+                </p>
+              )}
+
+              {activeModalPhase.bullets && (
+                <ul className="space-y-2 text-[17px] text-[#2b241f]">
+                  {activeModalPhase.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-[#ff6f3d] font-bold">•</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {activeModalPhase.numberedSteps && (
+                <ol className="space-y-2 text-[17px] text-[#2b241f]">
+                  {activeModalPhase.numberedSteps.map((s, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="font-bold text-[#ff6f3d]">{i + 1}.</span>
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+
+              {activeModalPhase.detailsText && (
+                <p className="font-body-sm text-[17px] text-[#595147] leading-relaxed">
+                  {activeModalPhase.detailsText}
+                </p>
+              )}
+
+              {activeModalPhase.tags && (
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {activeModalPhase.tags.map((t, i) => (
+                    <span key={i} className="bg-[#f3ecdb] text-[#ff6f3d] px-3 py-1 rounded-full text-[15px] font-label-md font-semibold border border-[#e6dfcd]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {activeModalPhase.highlight && (
+                <div className="bg-[#ffece4] border-l-4 border-[#ff6f3d] p-3 rounded-r-lg text-[16px] text-[#2b241f] italic font-medium">
+                  {activeModalPhase.highlight}
+                </div>
+              )}
+
+              {activeModalPhase.discovery && (
+                <div className="bg-[#f3ecdb] p-3 rounded-lg text-[16px] text-[#2b241f] border border-[#e6dfcd] font-medium">
+                  {activeModalPhase.discovery}
+                </div>
+              )}
+
+              {activeModalPhase.conclusion && (
+                <p className="font-body-sm text-[16px] text-[#595147] leading-relaxed italic pt-1">
+                  {activeModalPhase.conclusion}
+                </p>
+              )}
+            </div>
+
+            {/* Footer hint */}
+            <div className="text-center text-[14px] text-[#8a8073] pt-4 border-t border-[#f3ecdb]">
+              Click outside card or press Esc to close
+            </div>
+          </div>
         </div>
-      </section>
+      )}
     </main>
   );
 }
 
 export default CaseStudyScreen;
+

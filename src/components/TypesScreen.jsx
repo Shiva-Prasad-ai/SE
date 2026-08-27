@@ -62,14 +62,14 @@ export function TypesScreen({ onGoToCaseStudy }) {
     <main className="flex-grow w-full max-w-[1280px] mx-auto px-4 md:px-[48px] py-10 md:py-16 space-y-16">
       {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-block bg-[#f3ecdb] text-[#ff6f3d] px-3.5 py-1 rounded-full font-label-md text-[14px] font-semibold border border-[#e6dfcd]">
+        <div className="inline-block bg-[#f3ecdb] text-[#ff6f3d] px-3.5 py-1 rounded-full font-label-md text-[18px] font-semibold border border-[#e6dfcd]">
           Core Framework
         </div>
-        <h1 className="font-display text-[36px] md:text-[48px] leading-[1.1] text-[#2b241f] font-bold">
+        <h1 className="font-display text-[40px] md:text-[52px] leading-[1.1] text-[#2b241f] font-bold">
           The 4 Pillars of Software Maintenance
         </h1>
-        <p className="font-body-lg text-[18px] text-[#595147] leading-relaxed">
-          Software maintenance is not just about fixing bugs; it's a comprehensive strategy for ensuring longevity, performance, and adaptability in a rapidly changing technological landscape. Understanding these four distinct types is crucial for effective software engineering.
+        <p className="font-body-lg text-[22px] text-[#595147] leading-relaxed">
+          Software maintenance is more than fixing bugs. It keeps software reliable, efficient, secure, and adaptable as technology and user needs change. Understanding its four types helps developers maintain software effectively.
         </p>
       </section>
 
@@ -87,27 +87,27 @@ export function TypesScreen({ onGoToCaseStudy }) {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className={`w-12 h-12 rounded-lg ${item.bgColor} ${item.textColor} flex items-center justify-center`}>
-                    <span className="material-symbols-outlined text-[28px]">{item.icon}</span>
+                    <span className="material-symbols-outlined text-[32px]">{item.icon}</span>
                   </div>
-                  <h2 className="font-headline-lg text-[24px] md:text-[28px] text-[#2b241f] font-semibold">
+                  <h2 className="font-headline-lg text-[28px] md:text-[32px] text-[#2b241f] font-semibold">
                     {item.title}
                   </h2>
                 </div>
-                <span className="text-[12px] font-label-md bg-[#f3ecdb] text-[#595147] px-2.5 py-1 rounded-full font-medium">
+                <span className="text-[16px] font-label-md bg-[#f3ecdb] text-[#595147] px-2.5 py-1 rounded-full font-medium">
                   {item.badgeText}
                 </span>
               </div>
 
-              <p className="font-body-md text-[16px] text-[#595147] mb-6 leading-relaxed">
+              <p className="font-body-md text-[20px] text-[#595147] mb-6 leading-relaxed">
                 {item.description}
               </p>
             </div>
 
             <div className="bg-[#f3ecdb] rounded-lg p-4 mt-auto border border-[#e6dfcd]">
-              <h3 className="font-label-md text-[12px] text-[#ff6f3d] mb-1 uppercase tracking-wider font-bold">
+              <h3 className="font-label-md text-[16px] text-[#ff6f3d] mb-1 uppercase tracking-wider font-bold">
                 Example Scenario
               </h3>
-              <p className="font-body-sm text-[14px] text-[#2b241f] leading-relaxed">
+              <p className="font-body-sm text-[18px] text-[#2b241f] leading-relaxed">
                 {item.scenario}
               </p>
             </div>
@@ -118,13 +118,13 @@ export function TypesScreen({ onGoToCaseStudy }) {
       {/* 3-Column Summary Table */}
       <section className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="font-headline-md text-[24px] text-[#2b241f] font-bold">Maintenance Summary</h2>
+          <h2 className="font-headline-md text-[28px] text-[#2b241f] font-bold">Maintenance Summary</h2>
           <button
             onClick={onGoToCaseStudy}
-            className="text-[#ff6f3d] font-label-md text-[14px] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
+            className="text-[#ff6f3d] font-label-md text-[18px] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
           >
             <span>See Maintenance Phases</span>
-            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
           </button>
         </div>
 
@@ -132,12 +132,12 @@ export function TypesScreen({ onGoToCaseStudy }) {
           <table className="w-full text-left border-collapse min-w-[600px]">
             <thead>
               <tr className="bg-[#f3ecdb] border-b border-[#dbd2c3]">
-                <th className="p-4 font-label-md text-[14px] text-[#2b241f] font-bold uppercase tracking-wider">Type</th>
-                <th className="p-4 font-label-md text-[14px] text-[#2b241f] font-bold uppercase tracking-wider">What does it mean?</th>
-                <th className="p-4 font-label-md text-[14px] text-[#2b241f] font-bold uppercase tracking-wider">Why is the software changed?</th>
+                <th className="p-4 font-label-md text-[18px] text-[#2b241f] font-bold uppercase tracking-wider">Type</th>
+                <th className="p-4 font-label-md text-[18px] text-[#2b241f] font-bold uppercase tracking-wider">What does it mean?</th>
+                <th className="p-4 font-label-md text-[18px] text-[#2b241f] font-bold uppercase tracking-wider">Why is the software changed?</th>
               </tr>
             </thead>
-            <tbody className="font-body-sm text-[14px] text-[#2b241f]">
+            <tbody className="font-body-sm text-[18px] text-[#2b241f]">
               {typesData.map((row) => (
                 <tr
                   key={row.id}

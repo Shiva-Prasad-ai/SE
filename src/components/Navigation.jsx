@@ -7,7 +7,7 @@ export function Navigation({ activeTab, setActiveTab }) {
     { id: 'intro', label: 'Introduction' },
     { id: 'types', label: 'Maintenance Types' },
     { id: 'phases', label: 'Maintenance Phases' },
-    { id: 'examples', label: 'Examples' },
+    { id: 'examples', label: 'Example' },
     { id: 'resources', label: 'Reference' }
   ];
 
